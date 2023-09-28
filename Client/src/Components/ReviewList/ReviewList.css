@@ -1,0 +1,23 @@
+.list-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  background: #fff;
+  margin-inline: auto;
+  border-radius: 30px;
+  margin-top: 30px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.name {
+  font-weight: bold;
+  padding: 20px;
+}
+.review {
+  font-size: 20px;
+}
+.rating {
+  text-align: center;
+  padding: 20px;
+}

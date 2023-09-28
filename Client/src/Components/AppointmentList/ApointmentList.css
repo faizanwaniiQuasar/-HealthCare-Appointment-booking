@@ -1,0 +1,44 @@
+.list-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  background: #fff;
+  margin-inline: auto;
+  border-radius: 30px;
+  margin-top: 30px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+/* Optionally, you can add some spacing or styling to individual elements */
+.doctor {
+  font-weight: bold;
+  padding: 20px;
+  font-size: 20px;
+}
+
+.date,
+.time {
+  text-align: center;
+  padding: 20px;
+  font-size: 20px;
+}
+.button {
+  display: flex;
+  flex-direction: row;
+}
+
+.button button {
+  font-size: 14px;
+  background: #b7dacc;
+  margin: 10px 10px;
+  padding: 10px 8px;
+  border-radius: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.button button {
+  background-color: #1bac6d;
+  color: #fff;
+}
