@@ -30,8 +30,9 @@ const LoginSignup = () => {
       }
       navigate("/login");
     } catch (error) {
-      toast(error.message);
-      console.log(error);
+      // toast(error.message);
+      // console.log(error);
+      toast(error.response.data.message);
     }
   };
   return (
@@ -81,7 +82,7 @@ const LoginSignup = () => {
           </div>
         </div>
         <div className="submit-container">
-          <button type="submit" className="submit">
+          <button type="click" className="submit">
             Sign Up
           </button>
         </div>

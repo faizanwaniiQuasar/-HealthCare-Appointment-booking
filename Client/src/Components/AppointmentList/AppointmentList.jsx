@@ -25,7 +25,7 @@ const AppointmentList = () => {
         "http://localhost:3000/api/v1/appointment/doctor/" + id,
         config
       );
-      console.log(res.data.data.appointment);
+      console.log(res.data);
       setData(res.data.data.appointment);
 
       setIsLoading(false);

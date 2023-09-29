@@ -1,0 +1,7 @@
+.star-rating {
+  font-size: 30px; /* Adjust the font size of the stars */
+}
+
+.star-filled {
+  color: #1bac6d; /* Yellow color for filled stars */
+}

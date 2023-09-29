@@ -3,24 +3,41 @@ const { promisify } = require("util");
 const User = require("./../Models/userModel");
 const catchAsync = require("./../Utils/catchAsync");
 const AppError = require("./../Utils/appError");
+
 const signToken = (id, role, name) => {
   return jwt.sign({ id, role, name }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
 };
+
 exports.signup = catchAsync(async (req, res, next) => {
+  const { password, passwordConfirm } = req.body;
+
+  if (password !== passwordConfirm) {
+    return next(new AppError("Passwords are not the same!!", 400));
+  }
+
+  if (password.length < 8 && password.length > 0) {
+    return next(
+      new AppError("Passwords length must be of 8 characters or more!", 400)
+    );
+  }
+  // if (password.length === 0) {
+  //   return next(new AppError("Password field is empty", 404));
+  // }
   const newUser = await User.create({
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm,
-    role: req.body.role,
+    // role: req.body.role,
   });
 
   const token = signToken(newUser._id, newUser.role, newUser.name);
 
   res.status(201).json({
     status: "success",
+    message: "Signup successful",
     token,
     data: {
       user: newUser,
@@ -62,9 +79,10 @@ exports.protect = catchAsync(async (req, res, next) => {
       new AppError("You are not logged in! Please log in to get access", 401)
     );
   }
-
+  //now varifying the token
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
 
+  //to check if the user still exists
   const freshUser = await User.findById(decoded.id);
   if (!freshUser) {
     return next(

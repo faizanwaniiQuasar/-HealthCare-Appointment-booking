@@ -47,7 +47,8 @@ const RatingReview = ({ isRatingOpen, setIsRatingOpen, activeAppointment }) => {
       console.log(res);
       if (res.status === 200) toast("Review Added");
     } catch (err) {
-      console.error(err);
+      toast(err.response.data.message);
+      // console.error(err.response.data.message);
     }
     setIsRatingOpen(false);
   };
@@ -64,6 +65,7 @@ const RatingReview = ({ isRatingOpen, setIsRatingOpen, activeAppointment }) => {
               .map((_, index) =>
                 number >= index + 1 || hoverStar >= index + 1 ? (
                   <AiFillStar
+                    key={index}
                     onMouseOver={() => !number && setHoverStar(index + 1)}
                     onMouseLeave={() => setHoverStar(undefined)}
                     style={{ color: "orange" }}
@@ -71,6 +73,7 @@ const RatingReview = ({ isRatingOpen, setIsRatingOpen, activeAppointment }) => {
                   />
                 ) : (
                   <AiOutlineStar
+                    key={index}
                     onMouseOver={() => !number && setHoverStar(index + 1)}
                     onMouseLeave={() => setHoverStar(undefined)}
                     style={{ color: "orange" }}
@@ -83,6 +86,7 @@ const RatingReview = ({ isRatingOpen, setIsRatingOpen, activeAppointment }) => {
             value={reviewText}
             onChange={(e) => setReviewText(e.target.value)}
             placeholder="write your review here"
+            required
           />
           <button
             type="button"

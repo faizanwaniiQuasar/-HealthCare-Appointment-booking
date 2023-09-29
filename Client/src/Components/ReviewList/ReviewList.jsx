@@ -3,6 +3,7 @@ import "./ReviewList.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import RatingReview from "../RatingReview/RatingReview";
+import Star from "../star/Star";
 import { useNavigate, useParams } from "react-router-dom";
 const ReviewList = () => {
   const navigate = useNavigate();
@@ -53,7 +54,10 @@ const ReviewList = () => {
                     return (
                       <>
                         <p className="review">{item.content}</p>
-                        <p className="rating">Rating: {item.rating} </p>
+                        <p className="rating">
+                          Rating: <Star rating={item.rating} />{" "}
+                        </p>
+                        {/* {item.rating} */}
                       </>
                     );
                   })}

@@ -29,7 +29,8 @@ function LoginSignup() {
         navigate("/home");
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error.response.data.message);
+      toast(error.response.data.message);
     }
   };
   return (
@@ -60,7 +61,7 @@ function LoginSignup() {
           </div>
         </div>
         <div className="submit-container">
-          <button type="submit" className="submit">
+          <button type="click" className="submit">
             Login
           </button>
         </div>

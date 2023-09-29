@@ -30,13 +30,7 @@ const DocCard = () => {
       console.log(res.data.data.appointments);
       setData(res.data.data.appointments);
       const date = new Date(res.data.data.appointments[0].appointmentDate);
-      console.log(
-        "new Date hai",
-        convertToIST(date),
-        "is naam ka pehla date tha",
-        date,
-        ""
-      );
+
       setIsLoading(false);
     } catch (err) {
       console.log(err);
@@ -65,6 +59,10 @@ const DocCard = () => {
                 <p>Timing:</p>
                 {item.doctor.startTime} to {item.doctor.endTime}
               </div>
+              {/* <div className="time">
+                <p>Rating:</p>
+                {item.patient}
+              </div> */}
 
               <div className="button">
                 <button
